@@ -2,7 +2,7 @@ import cursos from "../models/Curso.js";
 import db from '../config/dbConnect.js';
 
 async function ObterCursos(){
-    const cursos = await db.query('select * from shae_db_local.cursos');
+    const cursos = await db.query('select * from shae_db.curso');
     return cursos;
 }
 
