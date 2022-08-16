@@ -1,5 +1,5 @@
 import express from "express";
-import cursos from "./cursosRoutes.js";
+import Materias from "./materiasRoutes.js";
 
 const routes = (app) => {
     app.route('/').get((req,res) => {
@@ -7,7 +7,7 @@ const routes = (app) => {
     })
     app.use(
         express.json(),
-        cursos
+        Materias
     )
 }
 
