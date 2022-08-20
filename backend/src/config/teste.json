@@ -1,0 +1,66 @@
+[
+    {
+        "id_materia": 1,
+        "nome_materia": "Matemática 1                                                                                                                                                                                            ",
+        "Id_curso": 1,
+        "nome_curso": "GEOMETRIA                                                                                                                                                                                               ",
+        "Id_topico": 1,
+        "nome_topico": "Figuras planas poligonais                                                                                                                                                                               "
+    },
+    {
+        "id_materia": 1,
+        "nome_materia": "Matemática 1                                                                                                                                                                                            ",
+        "Id_curso": 1,
+        "nome_curso": "GEOMETRIA                                                                                                                                                                                               ",
+        "Id_topico": 2,
+        "nome_topico": "Polígonos regulares e não regulares                                                                                                                                                                     "
+    },
+    {
+        "id_materia": 1,
+        "nome_materia": "Matemática 1                                                                                                                                                                                            ",
+        "Id_curso": 1,
+        "nome_curso": "GEOMETRIA                                                                                                                                                                                               ",
+        "Id_topico": 3,
+        "nome_topico": "Classificação dos polígonos quanto ao nº de lados                                                                                                                                                       "
+    },
+    {
+        "id_materia": 1,
+        "nome_materia": "Matemática 1                                                                                                                                                                                            ",
+        "Id_curso": 2,
+        "nome_curso": "ESTATÍSTICA E PROBABILIDADE                                                                                                                                                                             ",
+        "Id_topico": 4,
+        "nome_topico": "Amostra e população                                                                                                                                                                                     "
+    },
+    {
+        "id_materia": 1,
+        "nome_materia": "Matemática 1                                                                                                                                                                                            ",
+        "Id_curso": 2,
+        "nome_curso": "ESTATÍSTICA E PROBABILIDADE                                                                                                                                                                             ",
+        "Id_topico": 5,
+        "nome_topico": "Características de uma amostra                                                                                                                                                                          "
+    },
+    {
+        "id_materia": 1,
+        "nome_materia": "Matemática 1                                                                                                                                                                                            ",
+        "Id_curso": 2,
+        "nome_curso": "ESTATÍSTICA E PROBABILIDADE                                                                                                                                                                             ",
+        "Id_topico": 6,
+        "nome_topico": "Variável estatística-ideia inicial                                                                                                                                                                      "
+    },
+    {
+        "id_materia": 1,
+        "nome_materia": "Matemática 1                                                                                                                                                                                            ",
+        "Id_curso": 2,
+        "nome_curso": "ESTATÍSTICA E PROBABILIDADE                                                                                                                                                                             ",
+        "Id_topico": 7,
+        "nome_topico": "Tipos de variáveis                                                                                                                                                                                      "
+    },
+    {
+        "id_materia": 1,
+        "nome_materia": "Matemática 1                                                                                                                                                                                            ",
+        "Id_curso": 2,
+        "nome_curso": "ESTATÍSTICA E PROBABILIDADE                                                                                                                                                                             ",
+        "Id_topico": 8,
+        "nome_topico": "Coleta de dados numa pesquisa                                                                                                                                                                           "
+    }
+]

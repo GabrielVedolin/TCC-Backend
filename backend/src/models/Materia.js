@@ -1,6 +1,6 @@
 import db from '../config/dbConnect.js';
 
- function ObterMaterias(){
+ function ObterConteudo(){
     const materias = db.query('select * from shae_db.materia');
     return materias;
 }
