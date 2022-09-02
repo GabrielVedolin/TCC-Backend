@@ -1,7 +1,7 @@
 import db from '../config/dbConnect.js';
 
 
-//cadastrar curso,topico,conteudo
+// cadastrar curso,topico,conteudo
 //pode existir mais de um topico cadastrado ao mesmo curso
 //pode existir mais de um conteudo cadastrado do mesmo topico
 
