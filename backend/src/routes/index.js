@@ -1,6 +1,7 @@
 import express from "express";
 import Materias from "./materiasRoutes.js";
 import Comentarios from "./comentariosRoutes.js"
+import login from "./loginRoutes.js";
 
 const routes = (app) => {
     app.route('/').get((req,res) => {
@@ -9,7 +10,10 @@ const routes = (app) => {
     app.use(
         express.json(),
         Materias,
-        Comentarios
+        Comentarios,
+        login
+        
+
     )
 }
 
