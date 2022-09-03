@@ -2,6 +2,7 @@ import express from "express";
 import Materias from "./materiasRoutes.js";
 import Comentarios from "./comentariosRoutes.js"
 import login from "./loginRoutes.js";
+import esqueciSenha from "./esqueciMinhaSenhaRoutes.js";
 
 const routes = (app) => {
     app.route('/').get((req,res) => {
@@ -11,7 +12,8 @@ const routes = (app) => {
         express.json(),
         Materias,
         Comentarios,
-        login
+        login,
+        esqueciSenha
         
 
     )
