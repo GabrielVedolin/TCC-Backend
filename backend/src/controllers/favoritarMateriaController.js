@@ -47,7 +47,6 @@ class favoritarController {
                     );
                 console.log(error)
             })
-
     }
 
 
