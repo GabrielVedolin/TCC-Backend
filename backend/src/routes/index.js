@@ -3,6 +3,7 @@ import Materias from "./materiasRoutes.js";
 import Comentarios from "./comentariosRoutes.js"
 import login from "./loginRoutes.js";
 import esqueciSenha from "./esqueciMinhaSenhaRoutes.js";
+import favoritos from "./favoritarMateriaRoutes.js"
 
 const routes = (app) => {
     app.route('/').get((req,res) => {
@@ -13,7 +14,9 @@ const routes = (app) => {
         Materias,
         Comentarios,
         login,
-        esqueciSenha
+        esqueciSenha,
+        favoritos
+
         
 
     )
