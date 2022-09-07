@@ -14,30 +14,40 @@ class formularioPedagogicoController {
         // {"user_id_aprendiz":4,"id_pergunta":10,"resposta":2,"peso":16," tipo_alternativa":"video"},
         // {"user_id_aprendiz":4,"id_pergunta":10,"resposta":2,"peso":17," tipo_alternativa":"video"}]
 
-        let arr2 = req.body
+        // let arr2 = req.body
+        //    for(let i = 0;i<arr2.length;i++){
+        //      db.any(
+        //         `INSERT INTO shae_db.questionario_pedagogico
+        //         (user_id_aprendiz, id_pergunta, resposta, peso, tipo_alternativa)
+        //         VALUES($1:list)`,[arr2[i]]
+        //     ).then((result)=>{
+        //         console.log(result)
 
-        
+        //     }).catch((error)=>{
+        //         res.status(201).send({
+        //             message: "erro",
+        //         });
+        //         console.log("dentro do catch ",error)
 
+        //     })
+        //    }
 
-   for(let i = 0;i<arr2.length;i++){
-     db.any(
-        `INSERT INTO shae_db.questionario_pedagogico
-        (user_id_aprendiz, id_pergunta, resposta, peso, tipo_alternativa)
-        VALUES($1:list)`,[arr2[i]]
-    ).then((result)=>{
-        console.log(result)
+  
+    let arr2 = req.body
 
-    }).catch((error)=>{
-        res.status(201).send({
-            message: "erro",
-        });
-        console.log("dentro do catch ",error)
+    try{
+        for(let i = 0;i<arr2.length;i++){
+        let sql = await db.any(`INSERT INTO shae_db.questionario_pedagogico(user_id_aprendiz, id_pergunta, resposta, peso, tipo_alternativa)VALUES($1:list)`, [arr2[i]]);
+        }
+        res.status(200).json({ 
+            message:"dados gravados com sucesso"
+        })
+    }catch(err){
+        res.status(400).json({
+            message:"houve um erro com sua solicitação",messegaBD:err
+        })
+    }
 
-    })
-   }
-       
-
-       
     }
 
 }
