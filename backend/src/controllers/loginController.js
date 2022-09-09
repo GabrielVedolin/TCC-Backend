@@ -7,7 +7,7 @@ class loginController {
 
         if (user_email && user_senha) {
             const rows = await db.query(
-                `SELECT user_id, user_name, user_login, user_senha, user_email,user_tipo,user_ativo,user_criado FROM shae_db.usuario WHERE user_email = $1 and user_senha = $2;`, [user_email, user_senha])
+                `SELECT user_id, user_name, user_login, user_senha, user_email,user_tipo,user_flag_questionario,user_criado FROM shae_db.usuario WHERE user_email = $1 and user_senha = $2;`, [user_email, user_senha])
                 .then((result) => {
                     const user = result
                     if (user.length > 0) {
