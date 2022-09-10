@@ -6,6 +6,6 @@ const router = express.Router();
 
 router
 
-.put("/esqueciMinhaSenha",esqueciMinhaSenhaController.esqueciSenha)
+.post("/esqueciMinhaSenha",esqueciMinhaSenhaController.esqueciSenha)
 
 export default router
