@@ -22,7 +22,7 @@ class formularioPedagogicoController {
         }).catch((erro)=>{
             console.log(erro)
             res.status(400).json({
-            message:"houve um erro com sua solicitação"
+            message:"houve um erro com sua solicitação1"
         })
         })
 
