@@ -31,13 +31,14 @@ class favoritarController {
             })
 
     }
+    //`INSERT INTO shae_db.usuario_materia(user_id_aprendiz, user_id_materia) VALUES($1, $2);`, [user_id_aprendiz,user_id_materia])
     static adicionarFavoritos = async (req, res) => {
-        const {user_id_aprendiz, user_id_materia} = req.body;
-        await db.query(`INSERT INTO shae_db.usuario_materia(user_id_aprendiz, user_id_materia) VALUES($1, $2);`, [user_id_aprendiz,user_id_materia])
-            
+        const {id_conteudo, id_aprendiz} = req.body;
+        await db.query(`UPDATE shae_db.ultimo_feed SET  consumido=true where  id_conteudo=$1 and id_aprendiz =$2;`,[id_conteudo,id_aprendiz])
+          
             .then((result => {
                 res.status(201).send({
-                    message: "materia adicionada aos favoritos",
+                    message: "Conteudo consumido com sucesso",
                 });
             })).catch((error) => {
                 res.status(400)

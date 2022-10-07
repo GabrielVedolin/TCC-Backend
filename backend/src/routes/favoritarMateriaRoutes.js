@@ -8,6 +8,6 @@ const router = express.Router();
 router
 
 .get("/favoritos/:user_id_aprendiz",favoritarController.listarFavoritos)
-.post("/adicionarFavoritos",favoritarController.adicionarFavoritos)
+.put("/adicionarFavoritos",favoritarController.adicionarFavoritos)
 
 export default router
