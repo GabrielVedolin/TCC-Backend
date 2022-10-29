@@ -143,70 +143,85 @@ class MateriaController {
     };
 
     static criarNovoConteudo = async (req, res) => {
-        const { descricao,tipo,id_topico,descricao_texto,url_video_imagem } = req.body;
+        console.log(req.body);
+        const { descricao_conteudo,tipo,id_topico,descricao_texto,url_video_imagem,descricao_questionario,alternativas } = req.body;
         //se o conteudo gravado for do tipo video o paremetro descricao_texto vai vazio  
         //se o conteudo gravado for do tipo texto o paremetro vai url video imagem vai vazio 
         //se o conteudo gravado for do tipo imagem o paremetro descricao_texto vai vazio 
+        let returnIdconteudo = null;
         const rows = await db.query(
-            `INSERT INTO shae_db.conteudo(descricao, tipo, id_topico, descricao_texto, url_video_imagem) VALUES($1,$2,$3,$4,$5);`,[descricao,tipo,id_topico,descricao_texto,url_video_imagem]
+            `INSERT INTO shae_db.conteudo(descricao, tipo, id_topico, descricao_texto, url_video_imagem) VALUES($1,$2,$3,$4,$5) RETURNING id_conteudo;`,[descricao_conteudo,tipo,id_topico,descricao_texto,url_video_imagem]
         ).then((result => {
-            res.status(201).send({
-                message: "Conteudo gravado com sucesso!",
-            });
+            returnIdconteudo = result[0];
+            console.log("Conteudo gravado com sucesso!");
+            if(tipo != "questionario")
+            {
+                res.status(201).send({
+                    message: "Conteudo gravado com sucesso!",
+                });
+            }
         })).catch((error) => {
             res.status(400)
-
                 .send(
                     ` Erro: ${error}`
                 );
             console.log(error)
         })
-    };
-
-    static criarNovoConteudoQuestionario = async (req, res) => {
-        const { descricao,id_conteudo } = req.body;
-        //se o conteudo gravado for do tipo video o paremetro descricao_texto vai vazio  
-        //se o conteudo gravado for do tipo texto o paremetro vai url video imagem vai vazio 
-        //se o conteudo gravado for do tipo imagem o paremetro descricao_texto vai vazio 
-        const rows = await db.query(
-
-            // `INSERT INTO shae_db.questionario
-            // (descricao, id_conteudo)
-            // VALUES('Dado o conjunto A = {1,2,5, 10, 15, 28}, o número de subconjuntos possíveis para esse conjunto é ?', 10);`
-            `INSERT INTO shae_db.questionario(descricao, id_conteudo) VALUES($1,$2);`,[descricao,id_conteudo]   
-        ).then((result => {
-            res.status(201).send({
-                message: "questão gravada com sucesso!",
+        if(tipo == "questionario")
+        {
+            //se o conteudo gravado for do tipo video o paremetro descricao_texto vai vazio  
+            //se o conteudo gravado for do tipo texto o paremetro vai url video imagem vai vazio 
+            //se o conteudo gravado for do tipo imagem o paremetro descricao_texto vai vazio 
+            let returnIdquestionario = null;
+            const rowsQuestionario = await db.query(
+                // `INSERT INTO shae_db.questionario
+                // (descricao, id_conteudo)
+                // VALUES('Dado o conjunto A = {1,2,5, 10, 15, 28}, o número de subconjuntos possíveis para esse conjunto é ?', 10);`
+                `INSERT INTO shae_db.questionario(descricao, id_conteudo) VALUES($1,$2) RETURNING id_questionario`,[descricao_questionario, returnIdconteudo.id_conteudo]   
+            ).then((result => {
+                console.log(result[0]);
+                returnIdquestionario = result[0]
+                console.log("questão gravada com sucesso!");
+            })).catch((error) => {
+                res.status(400)
+                    .send(
+                        ` Erro: ${error}`
+                    );
+                console.log(error)
             });
-        })).catch((error) => {
-            res.status(400)
+            console.log('log rowsQuestionario: ' + rowsQuestionario);
 
-                .send(
-                    ` Erro: ${error}`
-                );
-            console.log(error)
-        })
-    };
+            //const { descricao,ordem,resposta_correta} = req.body;
 
-    static criarRespostasQuestionario = async (req, res) => {
-        const { descricao,ordem,resposta_correta,id_questionario } = req.body;
-        //se o conteudo gravado for do tipo video o paremetro descricao_texto vai vazio  
-        //se o conteudo gravado for do tipo texto o paremetro vai url video imagem vai vazio 
-        //se o conteudo gravado for do tipo imagem o paremetro descricao_texto vai vazio 
-        const rows = await db.query(
-            `INSERT INTO shae_db.alternativa_questionario(descricao, ordem, resposta_correta, id_questionario)VALUES($1,$2,$3,$4);`,[descricao,ordem,resposta_correta,id_questionario] 
-        ).then((result => {
-            res.status(201).send({
-                message: "alternativa gravada com sucesso!",
-            });
-        })).catch((error) => {
-            res.status(400)
+            //const arrayAlternativa = req.body;
 
-                .send(
-                    ` Erro: ${error}`
-                );
-            console.log(error)
-        })
+            //se o conteudo gravado for do tipo video o paremetro descricao_texto vai vazio  
+            //se o conteudo gravado for do tipo texto o paremetro vai url video imagem vai vazio 
+            //se o conteudo gravado for do tipo imagem o paremetro descricao_texto vai vazio 
+        
+            console.log(alternativas);
+            let values = 'VALUES';
+            for (let i = 0; i < alternativas.length; i++) {
+                values += ` ('${alternativas[i].descricao}', ${ alternativas[i].ordem}, ${ alternativas[i].resposta_correta}, ${alternativas[i].id_questionario}),`;    
+            }
+            values = values.substring(0, values.length - 1);
+            console.log(values);
+
+            const rowsAlternativa = await db.query(
+                `INSERT INTO shae_db.alternativa_questionario(descricao, ordem, resposta_correta, id_questionario)${values};` 
+            ).then((result => {
+                res.status(201).send({
+                    message: "formulario gravado com sucesso!",
+                });
+            })).catch((error) => {
+                res.status(400)
+
+                    .send(
+                        ` Erro: ${error}`
+                    );
+                console.log(error)
+            })
+        }
     };
 
 }

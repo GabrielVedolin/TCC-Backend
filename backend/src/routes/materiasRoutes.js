@@ -11,7 +11,5 @@ router
     .post("/cadastrarCurso",MateriaController.criarNovoCurso)
     .post("/cadastrarTopico",MateriaController.criarNovoTopico)
     .post("/cadastrarConteudo",MateriaController.criarNovoConteudo)
-    .post("/cadastrarQuestionario",MateriaController.criarNovoConteudoQuestionario)
-    .post("/cadastrarRespostaQuestionario",MateriaController.criarRespostasQuestionario)
 
 export default router;
