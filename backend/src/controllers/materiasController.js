@@ -202,7 +202,7 @@ class MateriaController {
             console.log(alternativas);
             let values = 'VALUES';
             for (let i = 0; i < alternativas.length; i++) {
-                values += ` ('${alternativas[i].descricao}', ${ alternativas[i].ordem}, ${ alternativas[i].resposta_correta}, ${returnIdquestionario}),`;    
+                values += ` ('${alternativas[i].descricao}', ${ alternativas[i].ordem}, ${ alternativas[i].resposta_correta}, ${returnIdquestionario.id_questionario}),`;    
             }
             values = values.substring(0, values.length - 1);
             console.log(values);
