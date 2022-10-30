@@ -11,7 +11,7 @@ class FeedController {
             .then((result => {
 
                 formQuestionario[0] = result
-                if (formQuestionario[0].length == 0) {
+                if (formQuestionario.length > 0) {
                     console.log('foi o questionario');
                 } else {
                     res.status(400).send({
@@ -19,6 +19,7 @@ class FeedController {
                     }
                     )
                 }
+
             })).catch((error) => {
                 res.status(400)
 
@@ -34,8 +35,9 @@ class FeedController {
             .then((result => {
 
                 formQuestionario[1] = result
-                if (formQuestionario[1].length == 0)
-                {
+                if (formQuestionario.length == 0) {
+                    console.log('foi as alternativas');
+                } else {
                     res.status(400).send({
                         message: "não há Alternativas para os questionarios cadastrados no momento!"
                     }
