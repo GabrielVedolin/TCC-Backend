@@ -2,9 +2,9 @@ import db from '../config/dbConnect.js';
 
 class FeedController {
 
-    static listarFormQuestionario = async (req, res) => {
+    static listarFormQuestionario = async (req, res) => {        
         const id_conteudo = parseInt(req.params.id_conteudo);
-        
+
         let formQuestionario = []
         await db.query(`select q.id_questionario,q.descricao,q.id_conteudo 
                                 from shae_db.questionario q where q.id_conteudo = $1;`, [id_conteudo])
@@ -35,11 +35,11 @@ class FeedController {
             .then((result => {
 
                 formQuestionario[1] = result
-                if (formQuestionario.length == 0) {
+                if (formQuestionario.length > 0) {
                     console.log('foi as alternativas');
                 } else {
                     res.status(400).send({
-                        message: "não há Alternativas para os questionarios cadastrados no momento!"
+                        message: "não há Alternatinas para o questionario cadastrado no momento!"
                     }
                     )
                 }
