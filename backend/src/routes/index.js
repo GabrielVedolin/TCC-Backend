@@ -5,6 +5,7 @@ import login from "./loginRoutes.js";
 import esqueciSenha from "./esqueciMinhaSenhaRoutes.js";
 import favoritos from "./favoritarMateriaRoutes.js"
 import formularioPedagogico from "./formularioPedagogicoRoutes.js"
+import feed from "./feedRoutes.js"
 
 const routes = (app) => {
     app.route('/').get((req,res) => {
@@ -17,7 +18,8 @@ const routes = (app) => {
         login,
         esqueciSenha,
         favoritos,
-        formularioPedagogico
+        formularioPedagogico,
+        feed
 
         
 
